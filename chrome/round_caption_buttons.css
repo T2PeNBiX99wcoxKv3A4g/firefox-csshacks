@@ -4,25 +4,40 @@ See the above repository for updates as well as full license text. */
 /* Make window-control - aka caption buttons round following theme text color. */
 
 /* Uncomment the following line to use colorful icons ala MacOS */
-/* .titlebar-button{ --uc-caption-background: var(--uc-caption-color) } */
-
-.titlebar-button { opacity: 0.6; --uc-caption-color: rgb(252,185,15) }
-.titlebar-min    { opacity: 0.5; --uc-caption-color: rgb(36, 209, 49) }
-.titlebar-close  { opacity: 0.7; --uc-caption-color: rgb(250, 55, 55) }
-
-.titlebar-button:hover { opacity: 1 }
+.titlebar-button {
+    --uc-caption-background: var(--uc-caption-color);
+}
 
 .titlebar-button {
-  background: transparent !important;
-  padding-inline: 10px !important;
-  transition: opacity 0.2s ease;
+    opacity: 0.6;
+    --uc-caption-color: rgb(252, 185, 15);
 }
-.titlebar-close {	padding-right: 18px !important; }
+.titlebar-min {
+    opacity: 0.5;
+    --uc-caption-color: rgb(36, 209, 49);
+}
+.titlebar-close {
+    opacity: 0.7;
+    --uc-caption-color: rgb(250, 55, 55);
+}
+
+.titlebar-button:hover {
+    opacity: 1;
+}
+
+.titlebar-button {
+    background: transparent !important;
+    padding-inline: 10px !important;
+    transition: opacity 0.2s ease;
+}
+.titlebar-close {
+    padding-right: 18px !important;
+}
 
 .titlebar-button > .toolbarbutton-icon {
-	list-style-image: none;
-	border-radius: 10px;
-  background: var(--uc-caption-background,currentColor) !important;
+    list-style-image: none;
+    border-radius: 10px;
+    background: var(--uc-caption-background, currentColor) !important;
 }
 
 /* OPTIONAL - move caption buttons in tabs toolbar a bit upwards */
