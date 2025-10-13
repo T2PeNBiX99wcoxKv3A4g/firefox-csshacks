@@ -2,10 +2,10 @@ name: 'Upstream Sync'
 
 on:
   schedule:
-    - cron:  '0 7 * * 1,4'
+    - cron: '0 7 * * 1,4'
     # scheduled at 07:00 every Monday and Thursday
 
-  workflow_dispatch:  # click the button on GitHub repo!
+  workflow_dispatch: # click the button on GitHub repo!
     inputs:
       sync_test_mode: # Adds a boolean option that appears during manual workflow run for easy test mode config
         description: 'Fork Sync Test Mode'
@@ -20,19 +20,18 @@ jobs:
       contents: write
 
     steps:
-      # REQUIRED step
-      # Step 1: run a standard checkout action, provided by github
       - name: Checkout target repo
         uses: actions/checkout@v3
         with:
           # optional: set the branch to checkout,
           # sync action checks out your 'target_sync_branch' anyway
-          ref:  master
+          ref: master
           # REQUIRED if your upstream repo is private (see wiki)
           persist-credentials: false
 
-      # REQUIRED step
-      # Step 2: run the sync action
+      - name: Set git user
+        uses: fregante/setup-git-user@v2
+
       - name: Sync upstream changes
         id: sync
         uses: aormsby/Fork-Sync-With-Upstream-action@v3.4.1
@@ -58,27 +57,3 @@ jobs:
 
       - name: Show value of 'has_new_commits'
         run: echo ${{ steps.sync.outputs.has_new_commits }}
-
-#      - name: Set git user
-#        if: steps.sync.outputs.has_new_commits == 'true'
-#        uses: fregante/setup-git-user@v2
-#
-#      - name: Fetch upstream
-#        if: steps.sync.outputs.has_new_commits == 'true'
-#        run: git fetch upstream
-#
-#      - name: Check for changes
-#        if: steps.sync.outputs.has_new_commits == 'true'
-#        run: git status
-#
-#      - name: Fetch from master
-#        if: steps.sync.outputs.has_new_commits == 'true'
-#        run: git fetch origin master
-#
-#      - name: Merge upstream
-#        if: steps.sync.outputs.has_new_commits == 'true'
-#        run: git merge upstream/master
-#
-#      - name: Push code to master
-#        if: steps.sync.outputs.has_new_commits == 'true'
-#        run: git push origin master
