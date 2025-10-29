@@ -21,7 +21,7 @@ As a workaround, the -moz-element background image is removed somewhat often whi
     pointer-events: none;
     background-repeat: no-repeat;
     background-image: -moz-element(#statuspanel);
-    background-position: left 3px;
+    background-position: left 2.5px;
     border-radius: 18px;
     inset: 1px;
 }
