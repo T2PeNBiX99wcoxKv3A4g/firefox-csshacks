@@ -13,56 +13,68 @@ Relevant information: https://bugzilla.mozilla.org/show_bug.cgi?id=1496065
 As a workaround, the -moz-element background image is removed somewhat often which seems work at first glance. But there might still be some related issues on really long sessions. Just be aware.
 **************/
 
-#urlbar::before{
-  z-index: 2;
-  content: "";
-  display: block;
-  position: absolute;
-  pointer-events:none;
-  background-repeat: no-repeat;
-  background-image: -moz-element(#statuspanel);
-  background-position: left 3px;
-  inset: 1px;
+#urlbar::before {
+    z-index: 2;
+    content: "";
+    display: block;
+    position: absolute;
+    pointer-events: none;
+    background-repeat: no-repeat;
+    background-image: -moz-element(#statuspanel);
+    background-position: left 3px;
+    border-radius: 18px;
+    inset: 1px;
 }
 
 /* Using -moz-element() causes some problems after Firefox has been running several hours such as long tab switch times. For this reason the background image is removed on hover and focused states which appears to clear the state. */
 
 /* Hide the status ovelay when urlbar is hovered */
 #urlbar:hover::before,
-#urlbar[focused]::before{
-  visibility: hidden;
-  /* Remove the image to get rid of -moz-element() related problems */
-  background-image: none !important;
+#urlbar[focused]::before {
+    visibility: hidden;
+    /* Remove the image to get rid of -moz-element() related problems */
+    background-image: none !important;
 }
 
-:root[uidensity="compact"] #urlbar::before{ background-position-y: 0px }
-:root[uidensity="touch"] #urlbar::before{ background-position-y: 3px }
+:root[uidensity="compact"] #urlbar::before {
+    background-position-y: 0px
+}
 
-#statuspanel-label{
-  height:3em;
-  min-width: calc(100vw);
-  background-color: var(--toolbar-field-background-color) !important;
-  border: none !important;
-  font-size: 1.15em;
-  color: inherit !important;
-  margin-inline: 0px !important;
-  padding-top: 3px !important;
+:root[uidensity="touch"] #urlbar::before {
+    background-position-y: 3px
+}
+
+#statuspanel-label {
+    height: 3em;
+    min-width: calc(100vw);
+    background-color: var(--toolbar-field-background-color) !important;
+    border: none !important;
+    font-size: 1.15em;
+    color: inherit !important;
+    margin-inline: 0px !important;
+    padding-top: 3px !important;
+    padding-left: 6px !important;
 }
 
 /* If you use a theme where urlbar is partially transparent you should edit this color to something that closely matches the perceived color of urlbar. Or perhaps use background-image - linear-gradient() can work well here. But keep the color or image opaque or otherwise you'll face an issue where urlbar text bleeds through */
-#statuspanel{ background-color: var(--toolbar-bgcolor) }
-
-#statuspanel{
-  color: var(--toolbar-field-color, black);
-  z-index: -1;
-  max-width: 100% !important;
-  padding-top: 0 !important;
+#statuspanel {
+    background-color: var(--toolbar-bgcolor);
 }
-#statuspanel[type="status"] { color: Highlight }
+
+#statuspanel {
+    color: var(--toolbar-field-color, black);
+    z-index: -1;
+    max-width: 100% !important;
+    padding-top: 0 !important;
+}
+
+#statuspanel[type="status"] {
+    color: Highlight
+}
 
 /* This creates opaque layer to be shown in front of "hidden" real statuspanel */
-.browserStack{
-  background-color: var(--tabpanel-background-color);
+.browserStack {
+    background-color: var(--tabpanel-background-color);
 }
 
 /*  OPTIONAL FEATURES  */
