@@ -32,7 +32,7 @@ See the above repository for updates as well as full license text. */
   background-color: transparent !important;
   background-repeat: no-repeat,var(--lwt-background-tiling);
     /* y position will be wrong if menubar is enabled... */
-  --uc-bg-y: calc(-2 * (var(--tab-block-margin) + var(--uc-toolbarbutton-inner-padding) + var(--uc-toolbarbutton-outer-padding)) - var(--tab-min-height) - 24px - var(--bookmark-block-padding));
+  --uc-bg-y: calc(-2 * (var(--tab-margin-block,var(--tab-block-margin,0px)) + var(--uc-toolbarbutton-inner-padding) + var(--uc-toolbarbutton-outer-padding)) - var(--tab-min-height) - 24px - var(--bookmark-block-padding));
   background-position: top left,var(--lwt-background-alignment,top left);
   background-position-y:0,var(--uc-bg-y),var(--uc-bg-y),var(--uc-bg-y);
   background-size: cover, auto, auto, auto,auto,auto;

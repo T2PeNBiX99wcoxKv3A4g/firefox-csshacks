@@ -41,7 +41,7 @@ See the above repository for updates as well as full license text. */
   pointer-events: none;
   opacity: 0;
   transition: transform 82ms linear var(--uc-autohide-toolbox-delay), opacity 0ms calc(var(--uc-autohide-toolbox-delay) + 82ms);
-  transform-origin: 0px calc(0px - var(--tab-min-height) - var(--tab-block-margin) * 2);
+  transform-origin: 0px calc(0px - var(--tab-min-height) - var(--tab-margin-block,var(--tab-block-margin,0px)) * 2);
   transform: rotateX(89.9deg);
 }
 

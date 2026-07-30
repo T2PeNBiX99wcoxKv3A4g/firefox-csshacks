@@ -27,7 +27,7 @@ Thanks to /u/skenera on reddit for suggesting animating background position and 
   display: block;
   position: absolute;
   width: 200vw;
-  height: calc(var(--tab-min-height) + var(--tab-block-margin) + 2px);
+  height: calc(var(--tab-min-height) + var(--tab-margin-block,var(--tab-block-margin,0px)) + 2px);
   background-image: linear-gradient(to right, magenta, red, yellow, green, cyan, blue, magenta);
   animation: rotate-gradient 10s steps(60) infinite;
   /*animation-timing-function: linear;  */ /* smoother animation, but greatly increased cpu use */
