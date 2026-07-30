@@ -7,6 +7,7 @@ See the above repository for updates as well as full license text. */
   --uc-navbar-height: -40px; /* navbar is main toolbar. Use negative value */
   --uc-autohide-toolbar-delay: 600ms; /* The toolbar is hidden after 0.6s */
   --uc-toolbox-browser-area-overlap: -1px;
+  z-index: var(--browser-area-z-index-toolbox-while-animating,auto) !important;
 }
 :root[uidensity="compact"] #navigator-toolbox{
   --uc-navbar-height: -34px;
@@ -33,7 +34,6 @@ See the above repository for updates as well as full license text. */
   }
 }
 
-#navigator-toolbox,
 #sidebar-box,
 #sidebar-main,
 #sidebar-splitter,
@@ -91,8 +91,8 @@ See the above repository for updates as well as full license text. */
   transform: rotateX(0deg);
 }
 
-:root[sessionrestored]:not([customizing]) #navigator-toolbox{
-  margin-bottom:  calc(var(--uc-toolbox-browser-area-overlap,0px) - var(--uc-bm-height) + var(--uc-navbar-height));
+:root[sessionrestored]:not([customizing]) :where(#navigator-toolbox){
+  margin-bottom:  calc(var(--uc-toolbox-browser-area-overlap,0px) - var(--uc-bm-height) + var(--uc-navbar-height)) !important;
 }
 
 /* Make sure the bookmarks toolbar is never collapsed even if it is disabled */
