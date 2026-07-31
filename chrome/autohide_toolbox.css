@@ -38,6 +38,7 @@ See the above repository for updates as well as full license text. */
 }
 #navigator-toolbox.chrome-block{
   margin-top: 0 !important;
+  border-top-width: 0px !important;
 }
 :root[sessionrestored] toolbar #searchbar-new[popover],
 :root[sessionrestored] #urlbar[popover]{
