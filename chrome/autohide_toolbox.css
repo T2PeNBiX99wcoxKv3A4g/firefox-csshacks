@@ -36,6 +36,9 @@ See the above repository for updates as well as full license text. */
   pointer-events: none;
   width: 100vw;
 }
+#navigator-toolbox.chrome-block{
+  margin-top: 0 !important;
+}
 :root[sessionrestored] toolbar #searchbar-new[popover],
 :root[sessionrestored] #urlbar[popover]{
   pointer-events: none;
