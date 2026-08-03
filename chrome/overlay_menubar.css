@@ -23,7 +23,7 @@ See the above repository for updates as well as full license text. */
     pointer-events: none;
   }
   #main-menubar{
-    height: calc(var(--tab-min-height) +  2 * var(--tab-block-margin,0px));
+    height: calc(var(--tab-min-height) +  2 * var(--tab-margin-block,var(--tab-block-margin,0px)));
     background-color: var(--panel-background-color) !important;
     color: var(--panel-text-color) !important;
   }
@@ -33,7 +33,7 @@ See the above repository for updates as well as full license text. */
       content: "";
       display: flex;
       width: 30px;
-      height: calc(var(--tab-min-height) +  2 * var(--tab-block-margin,0px));
+      height: calc(var(--tab-min-height) +  2 * var(--tab-margin-block,var(--tab-block-margin,0px)));
       background-image: linear-gradient(to right, var(--panel-background-color) 30%, transparent);
     }
   }
