@@ -104,10 +104,10 @@ tab-split-view-wrapper:is(:hover,[hasactivetab]){
 }
 
 /* This next rule set is needed for Fx 120, otherwise themes with translucent tabs would seem to have extra border separating them from toolbar below. */
-:root[lwtheme] #tabbrowser-tabs:not([movingtab]) .tabbrowser-tab > .tab-stack > .tab-background:is([selected], [multiselected]){
+:root:is([lwtheme],[builtintheme]) #tabbrowser-tabs:not([movingtab]) .tabbrowser-tab > .tab-stack > .tab-background:is([selected], [multiselected]){
   background-attachment: scroll, fixed, fixed !important;
   background-color: transparent !important;
-  background-image: linear-gradient(var(--tab-selected-bgcolor, transparent), var(--tab-selected-bgcolor, transparent)), var(--lwt-additional-images,none), var(--lwt-header-image, none) !important;;
+  background-image: linear-gradient(var(--tab-selected-bgcolor, transparent)), var(--lwt-additional-images,none), var(--lwt-header-image, none) !important;;
   background-position: 0 0, var(--lwt-background-alignment), right top !important;
   background-repeat: repeat-x, var(--lwt-background-tiling), no-repeat !important;
   background-size: auto 100%, var(--lwt-background-size, auto auto), auto auto !important;
