@@ -1,7 +1,7 @@
 /* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/reload_button_in_urlbar.css made available under Mozilla Public License v. 2.0
 See the above repository for updates as well as full license text. */
 
-/* Makes stop-reload-button appear as if it's inside urlbar. 
+/* Makes stop-reload-button appear as if it's inside urlbar.
  * First, move reload button next to urlbar on right side using
  * customize-mode.
  * If your theme has opaque background for urlbar then that will cover the reload button.
@@ -10,14 +10,15 @@ See the above repository for updates as well as full license text. */
 #nav-bar-customization-target{
   --uc-toolbarbutton-inner-padding: var(--toolbarbutton-padding-inner,var(--toolbarbutton-inner-padding));
   --uc-toolbarbutton-outer-padding: var(--toolbarbutton-padding-outer,var(--toolbarbutton-outer-padding));
+  --uc-stop-reload-padding: calc(2 * (var(--uc-toolbarbutton-outer-padding) + var(--uc-toolbarbutton-inner-padding)));
 }
 #urlbar-container + #stop-reload-button{
-  margin-left: calc( 1px - var(--urlbar-margin-inline) - 2 * (var(--uc-toolbarbutton-outer-padding) + var(--uc-toolbarbutton-inner-padding)) - 16px );
+  margin-left: calc( -1px - var(--urlbar-margin-inline) - var(--uc-stop-reload-padding) - 16px );
   position: relative;
   z-index: 3;
-  color:  var(--urlbar-box-hover-text-color) !important;
-  --toolbarbutton-hover-background: var(--urlbar-box-hover-bgcolor);
-  --toolbarbutton-background-color-hover: var(--urlbar-box-hover-bgcolor);
+  fill-opacity: var(--urlbar-icon-fill-opacity);
+  --toolbarbutton-icon-fill: var(--toolbar-field-text-color,canvastext);
+  --toolbarbutton-background-color-hover: var(--urlbar-box-background-color-hover);
 }
 
 #urlbar-container + #stop-reload-button > .toolbarbutton-1 > .toolbarbutton-icon{
@@ -26,8 +27,21 @@ See the above repository for updates as well as full license text. */
 }
 
 #urlbar{
-  padding-right: calc(2 * (var(--uc-toolbarbutton-outer-padding) + var(--uc-toolbarbutton-inner-padding)) + 12px) !important;
   pointer-events: none;
+  &[popover]{
+    padding-right: calc(var(--uc-stop-reload-padding) + 12px) !important;
+  }
+  &:not([popover]) > .urlbar-input-container{
+    padding-right: calc(var(--urlbar-input-container-padding) + var(--uc-stop-reload-padding) + 12px) !important;
+  }
+}
+:where(#urlbar[popover]) > .urlbar-background{
+  background-image: -moz-element(#stop-reload-button);
+  background-repeat: no-repeat;
+  background-position: 100% calc((var(--urlbar-height) - var(--urlbar-container-height)) / 2 - 1px);
+  [breakout-extend] > &{
+    background-position: calc(100% - var(--urlbar-margin-inline)) -1px;
+  }
 }
 .urlbar-input-container,
 .urlbarView{
